@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 // JobService class to fetch jobs from the Flask API
 class JobService {
@@ -21,7 +22,7 @@ class JobService {
 // Function to launch a URL in the browser (rename to avoid conflict with url_launcher)
 void launchUrl(String url) async {
   if (await canLaunchUrl(Uri.parse(url))) {
-    await launch(url); // Use url_launcher's launch function here
+    await launchUrlString(url); // Use url_launcher's launch function here
   } else {
     throw 'Could not launch $url';
   }
@@ -32,10 +33,10 @@ class JobListScreen extends StatefulWidget {
   const JobListScreen({super.key});
 
   @override
-  _JobListScreenState createState() => _JobListScreenState();
+  JobListScreenState createState() => JobListScreenState();
 }
 
-class _JobListScreenState extends State<JobListScreen> {
+class JobListScreenState extends State<JobListScreen> {
   late Future<Map<String, dynamic>> futureJobs;
 
   @override
