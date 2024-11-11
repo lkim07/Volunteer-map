@@ -89,7 +89,6 @@ def scraper(url, all_jobs):
 
 def searching(page_number):
   all_jobs = []
-  
   scraper(f"https://www.volunteerconnector.org/page-{page_number}/?so=Proximity&md=50&pc=V6P", all_jobs)
 
   return all_jobs
